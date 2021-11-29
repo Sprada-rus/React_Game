@@ -7,14 +7,57 @@
   pointer-events: none;
 }
 
+.dino{
+  position: absolute;
+  background-image: url("./img/dino1.png");
+  background-size: auto;
+  background-repeat: no-repeat;
+  bottom: 0;
+  width: 41px;
+  height: 43px;
+}
+
+.game-over{
+  background: url("./img/dino1.png") no-repeat;
+}
+
+#cactus{
+  position: absolute;
+  background-image: url("./img/cactus.png");
+  background-size: auto;
+  background-repeat: no-repeat;
+  align-items: end;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 30px;
+  animation: cactus infinite 2.5s linear;
+}
+
+.dino-run{
+  animation: dino-anim infinite .2s linear;
+}
+
+.dino-jump{
+  animation: jump infinite .5s linear;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
+.game-body{
+  position: relative;
+  margin: 0 auto;
+  border-bottom: black solid 2px;
+  width: 800px;
+  height: 300px;
+}
+
 .App-header {
-  background-color: #282c34;
+  background-color: #bebebe;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,11 +71,37 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+@keyframes dino-anim {
   from {
-    transform: rotate(0deg);
+    background-image: url("./img/dino2.png") ;
   }
   to {
-    transform: rotate(360deg);
+    background-image: url("./img/dino3.png") ;
   }
 }
+
+@keyframes jump {
+  0%{
+    padding-top: 0;
+  }
+  50%{
+    padding-top: 120px;
+  }
+  100%{
+   padding-top: 0;
+  }
+}
+
+@keyframes cactus {
+  0%{
+    left: 800px;
+  }
+  50%{
+    left: 400px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+

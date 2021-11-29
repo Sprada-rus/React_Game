@@ -1,25 +1,41 @@
-import logo from './logo.svg';
+import React, {useState} from "react";
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    let dino = document.getElementById('dino')
+    let cactus = document.getElementById('cactus')
+
+    let isGameOver = () => {
+        let positionDino = parseInt(window.getComputedStyle(dino).getPropertyValue("Top"))
+        let positionCactus = parseInt(window.getComputedStyle(dino).getPropertyValue("Left"))
+
+        if (positionCactus > 795 && positionDino < 30){
+            alert("Game over")
+        }
+    }
+
+    function Jump(){
+        dino.className += ' dino-jump'
+        setTimeout(() => {
+            dino.classList.remove('dino-jump')
+        }, 500)
+
+        console.log('OnClick')
+    }
+
+
+
+    return (
+        <div className="App">
+        <header className="App-header">
+            <div className="game-body">
+                <div id='dino' className='dino dino-run' onClick={Jump}/>
+                <div id='cactus' onClick={Jump}/>
+            </div>
+        </header>
+        </div>
+    );
 }
 
 export default App;
